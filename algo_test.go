@@ -51,3 +51,42 @@ func TestBinarySearch(t *testing.T) {
 	}
 
 }
+
+func TestNestedLoopDuplicateSearch(t *testing.T) {
+	t.Parallel()
+
+	type testCase struct {
+		numbers []int
+		want    bool
+	}
+
+	tcs := []testCase{
+		{numbers: []int{1, 5, 3, 9, 1, 4}, want: true},
+		{numbers: []int{1, 5, 3, 9, 17, 4}, want: false},
+	}
+
+	for _, tc := range tcs {
+		got := algo.NestedLoopDuplicateSearch(tc.numbers)
+
+		if tc.want != got {
+			t.Fatalf("want: %v, got: %v", tc.want, got)
+		}
+	}
+
+}
+
+func TestMapDupilcateSearch(t *testing.T) {
+
+	t.Parallel()
+
+	numbers := []int{1, 5, 3, 9, 1, 4}
+
+	want := true
+
+	got := algo.MapDuplicateSearch(numbers)
+
+	if want != got {
+		t.Fatalf("want: %v, got: %v", want, got)
+	}
+
+}

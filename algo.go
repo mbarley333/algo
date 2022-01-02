@@ -2,6 +2,8 @@ package algo
 
 func Bubble(numbers []int) []int {
 
+	// O(n^2)
+
 	length := len(numbers) - 1
 	sorted := false
 
@@ -21,6 +23,9 @@ func Bubble(numbers []int) []int {
 }
 
 func BinarySearch(numbers []int, target int) bool {
+
+	// O(log N)
+
 	min := 0
 	max := len(numbers) - 1
 
@@ -39,4 +44,42 @@ func BinarySearch(numbers []int, target int) bool {
 	}
 
 	return false
+}
+
+func NestedLoopDuplicateSearch(numbers []int) bool {
+
+	// O(n^2)
+	// requires two slices with acting as the comparison
+
+	for i := 0; i < len(numbers); i++ {
+		for j := 0; j < len(numbers); j++ {
+			if i != j && numbers[i] == numbers[j] {
+				return true
+			}
+		}
+	}
+	return false
+
+}
+
+func MapDuplicateSearch(numbers []int) bool {
+
+	// O(n)
+	// alternative to double loop
+
+	duplicateMap := map[int]bool{}
+
+	for _, number := range numbers {
+
+		_, ok := duplicateMap[number]
+
+		if ok {
+			return true
+		} else {
+			duplicateMap[number] = true
+		}
+	}
+
+	return false
+
 }
