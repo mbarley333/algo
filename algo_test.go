@@ -90,3 +90,135 @@ func TestMapDupilcateSearch(t *testing.T) {
 	}
 
 }
+
+func TestLinter(t *testing.T) {
+
+	t.Parallel()
+
+	str := "(var x = {y: [1,2,3]})"
+
+	err := algo.Linter(str)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+}
+
+func TestReverserStack(t *testing.T) {
+
+	t.Parallel()
+
+	str := "taco"
+
+	want := "ocat"
+
+	got := algo.Reverser(str)
+
+	if want != got {
+		t.Fatalf("want: %q, got: %q", want, got)
+	}
+
+}
+
+func TestRecursiveSum(t *testing.T) {
+	t.Parallel()
+
+	nums := []int{1, 2, 3, 4, 5}
+
+	want := 15
+
+	got := algo.RecursiveSum(nums)
+
+	if want != got {
+		t.Fatalf("want: %d, got: %d", want, got)
+	}
+}
+
+func TestRecursiveReverse(t *testing.T) {
+	t.Parallel()
+
+	str := "taco"
+
+	want := "ocat"
+
+	got := algo.RecursiveReverse(str)
+
+	if want != got {
+		t.Fatalf("want: %q, got: %q", want, got)
+	}
+}
+
+func TestCountingX(t *testing.T) {
+	t.Parallel()
+
+	str := "abxbxcxd"
+
+	want := 3
+
+	got := algo.CountingX(str)
+
+	if want != got {
+		t.Fatalf("want: %d, got: %d", want, got)
+	}
+
+}
+
+func TestStaircase(t *testing.T) {
+
+	t.Parallel()
+
+	// 1,1,1
+	// 2,1
+	// 1,2
+	// 3
+
+	n := 3
+	want := 4
+
+	got := algo.Staircase(n)
+
+	if want != got {
+		t.Fatalf("want: %d, got: %d", want, got)
+	}
+
+}
+
+func TestAnagram(t *testing.T) {
+	t.Parallel()
+
+	str := "abcd"
+
+	want := []string{
+		"abcd",
+		"bacd",
+		"bcad",
+		"bcda",
+		"acbd",
+		"cabd",
+		"cbad",
+		"cbda",
+		"acdb",
+		"cadb",
+		"cdab",
+		"cdba",
+		"abdc",
+		"badc",
+		"bdac",
+		"bdca",
+		"adbc",
+		"dabc",
+		"dbac",
+		"dbca",
+		"adcb",
+		"dacb",
+		"dcab",
+		"dcba",
+	}
+
+	got := algo.Anagram(str)
+
+	if !cmp.Equal(want, got) {
+		t.Error(cmp.Diff(want, got))
+	}
+
+}
