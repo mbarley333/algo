@@ -91,6 +91,8 @@ func TestMapDupilcateSearch(t *testing.T) {
 
 }
 
+// stack
+
 func TestLinter(t *testing.T) {
 
 	t.Parallel()
@@ -120,6 +122,8 @@ func TestReverserStack(t *testing.T) {
 
 }
 
+// recursion
+
 func TestRecursiveSum(t *testing.T) {
 	t.Parallel()
 
@@ -140,6 +144,10 @@ func TestRecursiveReverse(t *testing.T) {
 	str := "taco"
 
 	want := "ocat"
+
+	// solve aco + t = oca + t at the end
+	// RecusiveReverse(str[1:]) + str[0]
+	// exit point = i char string
 
 	got := algo.RecursiveReverse(str)
 

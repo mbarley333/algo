@@ -169,6 +169,10 @@ func Reverser(str string) string {
 	return value
 }
 
+// figure out the return value for the prior subproblem
+// assume it will all work out initially
+// base case is the exit point
+
 func RecursiveSum(nums []int) int {
 
 	fmt.Println(nums)
