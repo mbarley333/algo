@@ -6,11 +6,8 @@ import (
 )
 
 // recursion is a stack LIFO
-
 // Imagine the function you’re writing has already been implemented by someone else.
-
 // Identify the subproblem of the problem.
-
 // See what happens when you call the function on the subproblem and go from there.
 
 func RecursiveSum(nums []int) int {
@@ -169,4 +166,42 @@ func UniquePath(row, col int) int {
 
 	// paths from a smaller grids
 	return UniquePath(row-1, col) + UniquePath(row, col-1)
+}
+
+// too many recursions
+func MaxTooMany(nums []int) int {
+
+	fmt.Printf("recurse %v\n", nums)
+	// base
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	// avoid using recursion in conditional statements
+	if nums[0] > Max(nums[1:]) {
+		return nums[0]
+	} else {
+		return Max(nums[1:])
+	}
+
+}
+
+func Max(nums []int) int {
+
+	fmt.Printf("recurse %v\n", nums)
+	// base
+	if len(nums) == 1 {
+		return nums[0]
+	}
+
+	// intermediate variable to solve multiple recursions
+	currentMax := Max(nums[1:])
+
+	// recurse
+	if nums[0] > currentMax {
+		return nums[0]
+	} else {
+		return currentMax
+	}
+
 }

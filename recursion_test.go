@@ -193,3 +193,35 @@ func TestUniquePaths(t *testing.T) {
 	}
 
 }
+
+func TestMaxTooMany(t *testing.T) {
+
+	t.Parallel()
+
+	want := 4
+
+	test := []int{1, 2, 3, 4}
+
+	got := algo.MaxTooMany(test)
+
+	if want != got {
+		t.Fatalf("want: %d, got: %d", want, got)
+	}
+
+}
+
+func TestMax(t *testing.T) {
+
+	t.Parallel()
+
+	want := 4
+
+	test := []int{1, 2, 3, 4}
+
+	got := algo.Max(test)
+
+	if want != got {
+		t.Fatalf("want: %d, got: %d", want, got)
+	}
+
+}
