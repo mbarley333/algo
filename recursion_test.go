@@ -115,3 +115,81 @@ func TestAnagram(t *testing.T) {
 	}
 
 }
+
+func TestCharacterCounter(t *testing.T) {
+	t.Parallel()
+
+	test := []string{"ab", "c", "def", "ghij"}
+
+	want := 10
+
+	got, err := algo.CharacterCounter(test)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if want != got {
+		t.Fatalf("want: %d, got: %d", want, got)
+	}
+
+}
+
+func TestReturnEven(t *testing.T) {
+	t.Parallel()
+
+	test := []int{2, 3, 6}
+
+	want := []int{2, 6}
+
+	got := algo.ReturnEven(test)
+
+	if !cmp.Equal(want, got) {
+		t.Error(cmp.Diff(want, got))
+	}
+
+}
+
+func TestTriangle(t *testing.T) {
+	t.Parallel()
+
+	want := 6
+
+	got := algo.Triangle(3)
+
+	if want != got {
+		t.Fatalf("want: %d, got: %d", want, got)
+	}
+
+}
+
+func TestFirstX(t *testing.T) {
+	t.Parallel()
+
+	test := "abwedxxx"
+
+	want := 5
+
+	got := algo.FirstX(test)
+
+	if want != got {
+		t.Fatalf("want: %d, got: %d", want, got)
+	}
+
+}
+
+func TestUniquePaths(t *testing.T) {
+
+	t.Parallel()
+
+	want := 28
+
+	row := 3
+	col := 7
+
+	got := algo.UniquePath(row, col)
+
+	if want != got {
+		t.Fatalf("want: %d, got: %d", want, got)
+	}
+
+}
