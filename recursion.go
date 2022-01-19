@@ -2,7 +2,6 @@ package algo
 
 import (
 	"errors"
-	"fmt"
 )
 
 // recursion is a stack LIFO
@@ -118,7 +117,7 @@ func ReturnEven(nums []int) []int {
 
 	evens := ReturnEven(nums[1:])
 
-	fmt.Println(nums)
+	// fmt.Println(nums)
 	if nums[0]%2 == 0 {
 		// append to start of slice
 		evens = append(evens, 0)
@@ -171,7 +170,7 @@ func UniquePath(row, col int) int {
 // too many recursions
 func MaxTooMany(nums []int) int {
 
-	fmt.Printf("recurse %v\n", nums)
+	//fmt.Printf("recurse %v\n", nums)
 	// base
 	if len(nums) == 1 {
 		return nums[0]
@@ -188,7 +187,7 @@ func MaxTooMany(nums []int) int {
 
 func Max(nums []int) int {
 
-	fmt.Printf("recurse %v\n", nums)
+	//fmt.Printf("recurse %v\n", nums)
 	// base
 	if len(nums) == 1 {
 		return nums[0]

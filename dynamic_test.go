@@ -35,9 +35,9 @@ func TestBottomUpFib(t *testing.T) {
 func TestAddUntil100(t *testing.T) {
 	t.Parallel()
 
-	want := 90
+	want := 99
 
-	test := []int{10, 20, 30, 35, 55}
+	test := []int{5, 5, 5, 45, 5, 10, 99}
 
 	got := algo.AddUntil100(test)
 

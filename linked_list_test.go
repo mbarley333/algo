@@ -32,8 +32,8 @@ func TestLinkedList(t *testing.T) {
 		List: n1,
 	}
 
-	want := "a"
-	got := l.Read(2)
+	want := "time"
+	got := l.Read(3)
 
 	if want != got {
 		t.Fatalf("want:%q, got:%q", want, got)

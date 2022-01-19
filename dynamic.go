@@ -51,7 +51,6 @@ func AddUntil100(nums []int) int {
 	}
 
 	currentSum := AddUntil100(nums[1:])
-	fmt.Println(currentSum)
 
 	// unecessary recursion in conditional logic
 	// if nums[0]+AddUntil100(nums[1:]) > 100 {
