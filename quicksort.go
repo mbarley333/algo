@@ -1,6 +1,8 @@
 package algo
 
-import "sort"
+import (
+	"sort"
+)
 
 type Sortable []int
 
@@ -104,4 +106,45 @@ func (s *Sortable) SortIntFindDuplicate() bool {
 
 	}
 	return false
+}
+
+func (s *Sortable) GreatestProductAny3() int {
+
+	sort.Ints(*s)
+
+	return (*s)[len(*s)-1] * (*s)[len(*s)-2] * (*s)[len(*s)-3]
+}
+
+func (s Sortable) MissingNumber() (int, bool) {
+
+	sort.Ints(s)
+
+	for index, num := range s {
+		if index != num {
+			return index, true
+		}
+	}
+
+	return 0, false
+}
+
+func (s Sortable) LargestON() int {
+
+	largest := 0
+
+	for i := 0; i < len(s); i++ {
+		if s[i] > largest {
+			largest = s[i]
+		}
+	}
+
+	return largest
+}
+
+func (s Sortable) LargestNlogON() int {
+
+	sort.Ints(s)
+
+	return s[len(s)-1]
+
 }

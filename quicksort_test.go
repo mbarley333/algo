@@ -89,3 +89,68 @@ func TestSortIntFirstFindDup(t *testing.T) {
 	}
 
 }
+
+func TestGreatestProductAny3(t *testing.T) {
+	t.Parallel()
+
+	s := algo.Sortable{5, 10, 20, 1, 2, 4}
+
+	want := 1000
+
+	got := s.GreatestProductAny3()
+
+	if want != got {
+		t.Fatalf("want: %d, got: %d", want, got)
+	}
+
+}
+
+func TestMissingNumber(t *testing.T) {
+	t.Parallel()
+
+	s := algo.Sortable{5, 2, 4, 1, 0}
+
+	want := true
+	wantMissing := 3
+
+	gotMissing, got := s.MissingNumber()
+
+	if want != got {
+		t.Fatalf("want: %v, got: %v", want, got)
+	}
+
+	if wantMissing != gotMissing {
+		t.Fatalf("want: %v, got: %v", wantMissing, gotMissing)
+	}
+
+}
+
+func TestLargestON(t *testing.T) {
+	t.Parallel()
+
+	s := algo.Sortable{5, 2, 4, 1, 0}
+
+	want := 5
+
+	got := s.LargestON()
+
+	if want != got {
+		t.Fatalf("want: %v, got: %v", want, got)
+	}
+
+}
+
+func TestLargestNlogON(t *testing.T) {
+	t.Parallel()
+
+	s := algo.Sortable{5, 2, 4, 1, 0}
+
+	want := 5
+
+	got := s.LargestNlogON()
+
+	if want != got {
+		t.Fatalf("want: %v, got: %v", want, got)
+	}
+
+}
