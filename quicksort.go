@@ -1,5 +1,7 @@
 package algo
 
+import "sort"
+
 type Sortable []int
 
 func (s Sortable) Partition(left, right int) int {
@@ -73,4 +75,33 @@ func (s *Sortable) Quickselect(kth_lowest, left, right int) int {
 		return (*s)[pivot_index]
 	}
 
+}
+
+// use a sort to speed algo
+func (s *Sortable) SortFirstFindDuplicate() bool {
+
+	s.Quicksort(0, len(*s)-1)
+
+	for i := 0; i < len(*s); i++ {
+
+		if (*s)[i] == (*s)[i+1] {
+			return true
+		}
+
+	}
+	return false
+}
+
+func (s *Sortable) SortIntFindDuplicate() bool {
+
+	sort.Ints(*s)
+
+	for i := 0; i < len(*s); i++ {
+
+		if (*s)[i] == (*s)[i+1] {
+			return true
+		}
+
+	}
+	return false
 }

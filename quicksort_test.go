@@ -61,3 +61,31 @@ func TestQuickselect(t *testing.T) {
 	}
 
 }
+
+func TestSortFirstFindDup(t *testing.T) {
+	t.Parallel()
+
+	s := algo.Sortable{5, 9, 3, 2, 4, 5, 6}
+
+	want := true
+	got := s.SortFirstFindDuplicate()
+
+	if want != got {
+		t.Fatalf("want: %v, got: %v", want, got)
+	}
+
+}
+
+func TestSortIntFirstFindDup(t *testing.T) {
+	t.Parallel()
+
+	s := algo.Sortable{5, 9, 3, 2, 4, 5, 6}
+
+	want := true
+	got := s.SortIntFindDuplicate()
+
+	if want != got {
+		t.Fatalf("want: %v, got: %v", want, got)
+	}
+
+}
