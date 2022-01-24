@@ -2,7 +2,7 @@ package algo
 
 type Sortable []int
 
-func (s Sortable) Paritition(left, right int) int {
+func (s Sortable) Partition(left, right int) int {
 
 	// rightmost element
 	pivot_index := right
@@ -42,4 +42,35 @@ func (s Sortable) Paritition(left, right int) int {
 
 	// index of pivot
 	return left
+}
+
+func (s *Sortable) Quicksort(left, right int) {
+
+	if right-left <= 0 {
+		return
+	}
+
+	pivot_index := s.Partition(left, right)
+
+	s.Quicksort(left, pivot_index-1)
+
+	s.Quicksort(pivot_index+1, right)
+}
+
+func (s *Sortable) Quickselect(kth_lowest, left, right int) int {
+
+	if right-left == 0 {
+		return (*s)[left]
+	}
+
+	pivot_index := s.Partition(left, right)
+
+	if kth_lowest < pivot_index {
+		return s.Quickselect(kth_lowest, left, pivot_index-1)
+	} else if kth_lowest > pivot_index {
+		return s.Quickselect(kth_lowest, pivot_index+1, right)
+	} else {
+		return (*s)[pivot_index]
+	}
+
 }

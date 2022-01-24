@@ -5,6 +5,7 @@ type Node struct {
 	Next *Node
 }
 
+// holds the first node
 type LinkedList struct {
 	List *Node
 }
