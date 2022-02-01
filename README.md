@@ -1,5 +1,5 @@
 # algo
-Read through the book, A Common-Sense Guide to Data Structures and Algorithms - Second Edition, and implement code samples and exercises in the Go language.  The book itself is coded in Ruby, JS and Python.  In reality, having to translate code between languages has been a net benefit in both exposure to other languages and applying Go idioms to someone else's code.  I added Go based unit tests to the majority of code samples and exercises.
+Read through the book, A Common-Sense Guide to Data Structures and Algorithms - Second Edition, and implement code samples and exercises in the Go language.  The book itself is coded in Ruby, JS and Python.  In reality, having to translate code between languages has been a net benefit in both exposure to other languages and applying Go idioms to someone else's code.  In addition, the majority of the code is covered by Go unit tests.
 
 
 ## Topics covered:
