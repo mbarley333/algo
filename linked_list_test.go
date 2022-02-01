@@ -2,6 +2,7 @@ package algo_test
 
 import (
 	"algo"
+	"bytes"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -117,6 +118,136 @@ func TestLinkedListInsert(t *testing.T) {
 
 	if !cmp.Equal(want, got) {
 		t.Error(cmp.Diff(want, got))
+	}
+
+}
+
+func TestLinkedListDelete(t *testing.T) {
+	t.Parallel()
+
+	//want := algo.LinkedList{}
+	l := algo.LinkedList{
+		List: &algo.Node{
+			Data: "yellow",
+			Next: &algo.Node{
+				Data: "blue",
+				Next: &algo.Node{
+					Data: "black",
+					Next: &algo.Node{
+						Data: "green",
+						Next: &algo.Node{
+							Data: "red",
+							Next: nil}}}},
+		},
+	}
+
+	want := algo.LinkedList{
+		List: &algo.Node{
+			Data: "yellow",
+			Next: &algo.Node{
+				Data: "blue",
+				Next: &algo.Node{
+					Data: "green",
+					Next: &algo.Node{
+						Data: "red",
+						Next: nil}}},
+		},
+	}
+
+	l.Delete(3)
+
+	got := l
+
+	if !cmp.Equal(want, got) {
+		t.Error(cmp.Diff(want, got))
+	}
+
+}
+
+func TestPrintLinkedList(t *testing.T) {
+	t.Parallel()
+
+	l := algo.LinkedList{
+		List: &algo.Node{
+			Data: "yellow",
+			Next: &algo.Node{
+				Data: "blue",
+				Next: &algo.Node{
+					Data: "green",
+					Next: &algo.Node{
+						Data: "red",
+						Next: nil}}},
+		},
+	}
+
+	output := &bytes.Buffer{}
+	want := "yellowbluegreenred"
+
+	l.PrintLinkedList(output)
+
+	got := output.String()
+
+	if want != got {
+		t.Fatalf("want: %q, got: %q", want, got)
+	}
+
+}
+
+func TestPrintLastLinkedList(t *testing.T) {
+	t.Parallel()
+
+	l := algo.LinkedList{
+		List: &algo.Node{
+			Data: "yellow",
+			Next: &algo.Node{
+				Data: "blue",
+				Next: &algo.Node{
+					Data: "green",
+					Next: &algo.Node{
+						Data: "red",
+						Next: nil}}},
+		},
+	}
+
+	output := &bytes.Buffer{}
+	want := "red"
+
+	l.PrintLinkedListLast(output)
+
+	got := output.String()
+
+	if want != got {
+		t.Fatalf("want: %q, got: %q", want, got)
+	}
+
+}
+
+func TestReversetLinkedList(t *testing.T) {
+	t.Parallel()
+
+	l := algo.LinkedList{
+		List: &algo.Node{
+			Data: "yellow",
+			Next: &algo.Node{
+				Data: "blue",
+				Next: &algo.Node{
+					Data: "green",
+					Next: &algo.Node{
+						Data: "red",
+						Next: nil}}},
+		},
+	}
+
+	l.ReverseLinkedList()
+	output := &bytes.Buffer{}
+	want := "redgreenblueyellow"
+
+	l.PrintLinkedList(output)
+
+	got := output.String()
+
+	if want != got {
+		t.Fatalf("want: %q, got: %q", want, got)
 	}
 
 }
