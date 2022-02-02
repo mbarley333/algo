@@ -251,3 +251,36 @@ func TestReversetLinkedList(t *testing.T) {
 	}
 
 }
+
+func TestRemoveFromMiddle(t *testing.T) {
+	t.Parallel()
+
+	nodeD := &algo.Node{
+		Data: "D",
+		Next: nil,
+	}
+
+	nodeC := &algo.Node{
+		Data: "C",
+		Next: nodeD,
+	}
+
+	nodeB := &algo.Node{
+		Data: "B",
+		Next: nodeC,
+	}
+
+	want := &algo.Node{
+		Data: "C",
+		Next: nodeD,
+	}
+
+	algo.RemoveFromMiddle(nodeB)
+
+	got := nodeB
+
+	if !cmp.Equal(want, got) {
+		t.Error(cmp.Diff(want, got))
+	}
+
+}
