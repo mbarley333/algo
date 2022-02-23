@@ -71,8 +71,11 @@ func TestLinkedListSearch(t *testing.T) {
 		List: n1,
 	}
 
-	want := 0
-	got := l.Search("time")
+	want := 3
+	got, err := l.Search("time")
+	if err != nil {
+		t.Fatal(err)
+	}
 
 	if want != got {
 		t.Fatalf("want:%d, got:%d", want, got)

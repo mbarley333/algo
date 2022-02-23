@@ -1,6 +1,6 @@
 package algo
 
-import "fmt"
+import "errors"
 
 type DNode struct {
 	Data         string
@@ -30,6 +30,40 @@ func (d *DoublyLinkedList) InsertAtEnd(data string) {
 
 	}
 
-	fmt.Println(d)
+}
+
+func (d *DoublyLinkedList) SearchForward(value string) (bool, error) {
+
+	if d.FirstNode == nil {
+		return false, errors.New("list is empty")
+	}
+
+	temp := d.FirstNode
+	for temp != nil {
+		if temp.Data == value {
+			return true, nil
+		}
+		temp = temp.NextNode
+	}
+
+	return false, nil
+
+}
+
+func (d *DoublyLinkedList) SearchReverse(value string) (bool, error) {
+
+	if d.LastNode == nil {
+		return false, errors.New("list is empty")
+	}
+
+	temp := d.LastNode
+	for temp != nil {
+		if temp.Data == value {
+			return true, nil
+		}
+		temp = temp.PreviousNode
+	}
+
+	return false, nil
 
 }

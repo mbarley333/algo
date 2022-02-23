@@ -1,6 +1,7 @@
 package algo
 
 import (
+	"errors"
 	"fmt"
 	"io"
 )
@@ -34,7 +35,7 @@ func (l LinkedList) Read(index int) string {
 
 }
 
-func (l LinkedList) Search(value string) int {
+func (l LinkedList) Search(value string) (int, error) {
 
 	current_node := l.List
 	current_index := 0
@@ -43,8 +44,8 @@ func (l LinkedList) Search(value string) int {
 
 	for !isFound {
 
-		if current_node.Next == nil {
-			break
+		if current_node == nil {
+			return 0, errors.New("list is empty")
 		}
 
 		if current_node.Data == value {
@@ -57,7 +58,7 @@ func (l LinkedList) Search(value string) int {
 
 	}
 
-	return index
+	return index, nil
 }
 
 func (l *LinkedList) Insert(index int, data string) error {
