@@ -7,29 +7,29 @@ import (
 type Vertex string
 
 type Graph struct {
-	Adjacent map[Vertex][]Vertex
-	Visited  map[Vertex]struct{}
+	adjacent map[Vertex][]Vertex
+	visited  map[Vertex]struct{}
 }
 
 func NewGraph() *Graph {
 	g := &Graph{
-		Adjacent: make(map[Vertex][]Vertex),
-		Visited:  make(map[Vertex]struct{}),
+		adjacent: make(map[Vertex][]Vertex),
+		visited:  make(map[Vertex]struct{}),
 	}
 	return g
 }
 
 func (g *Graph) AddVertex(vertex Vertex) {
-	g.Adjacent[vertex] = nil
+	g.adjacent[vertex] = nil
 }
 
 func (g *Graph) AddEdge(vertex1, vertex2 Vertex) error {
-	if _, ok := g.Adjacent[vertex1]; !ok {
+	if _, ok := g.adjacent[vertex1]; !ok {
 		return fmt.Errorf("unable to create edge: vertex %v does not exist", vertex1)
 	}
 
-	g.Adjacent[vertex1] = append(g.Adjacent[vertex1], vertex2)
-	g.Adjacent[vertex2] = append(g.Adjacent[vertex2], vertex1)
+	g.adjacent[vertex1] = append(g.adjacent[vertex1], vertex2)
+	g.adjacent[vertex2] = append(g.adjacent[vertex2], vertex1)
 	return nil
 }
 
@@ -39,11 +39,11 @@ func (g Graph) DFSrecursive(startVertex, searchValue Vertex) Vertex {
 		return startVertex
 	}
 
-	g.Visited[startVertex] = struct{}{}
+	g.visited[startVertex] = struct{}{}
 
-	for _, adjacent := range g.Adjacent[startVertex] {
+	for _, adjacent := range g.adjacent[startVertex] {
 
-		_, ok := g.Visited[adjacent]
+		_, ok := g.visited[adjacent]
 		if !ok {
 			result := g.DFSrecursive(adjacent, searchValue)
 			if result == searchValue {
