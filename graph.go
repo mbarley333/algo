@@ -1,46 +1,56 @@
 package algo
 
-type Vertex struct {
-	Value            string
-	AdjacentVertices []*Vertex
-}
+import (
+	"fmt"
+)
 
-func NewVertex(value string) *Vertex {
-	v := &Vertex{
-		Value: value,
-	}
-	return v
-}
-
-// reciprocol add to adjacent
-func (v *Vertex) AddAdjacent(vertex *Vertex) {
-
-	// bail if entry exists
-	for _, exisitingVertex := range v.AdjacentVertices {
-		if v.Value == exisitingVertex.Value {
-			return
-		}
-	}
-
-	v.AdjacentVertices = append(v.AdjacentVertices, vertex)
-
-	// add adjacent to other side too
-	vertex.AdjacentVertices = append(vertex.AdjacentVertices, v)
-
-}
+type Vertex string
 
 type Graph struct {
-	Vertices []*Vertex
-	Visited  map[*Vertex]interface{}
+	Adjacent map[Vertex][]Vertex
+	Visited  map[Vertex]struct{}
 }
 
 func NewGraph() *Graph {
 	g := &Graph{
-		Visited: make(map[*Vertex]interface{}),
+		Adjacent: make(map[Vertex][]Vertex),
+		Visited:  make(map[Vertex]struct{}),
 	}
 	return g
 }
 
-func (g *Graph) Add(vertex *Vertex) {
-	g.Vertices = append(g.Vertices, vertex)
+func (g *Graph) AddVertex(vertex Vertex) {
+	g.Adjacent[vertex] = nil
+}
+
+func (g *Graph) AddEdge(vertex1, vertex2 Vertex) error {
+	if _, ok := g.Adjacent[vertex1]; !ok {
+		return fmt.Errorf("unable to create edge: vertex %v does not exist", vertex1)
+	}
+
+	g.Adjacent[vertex1] = append(g.Adjacent[vertex1], vertex2)
+	g.Adjacent[vertex2] = append(g.Adjacent[vertex2], vertex1)
+	return nil
+}
+
+func (g Graph) DFSrecursive(startVertex, searchValue Vertex) Vertex {
+
+	if startVertex == searchValue {
+		return startVertex
+	}
+
+	g.Visited[startVertex] = struct{}{}
+
+	for _, adjacent := range g.Adjacent[startVertex] {
+
+		_, ok := g.Visited[adjacent]
+		if !ok {
+			result := g.DFSrecursive(adjacent, searchValue)
+			if result == searchValue {
+				return result
+			}
+
+		}
+	}
+	return ""
 }
