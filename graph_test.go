@@ -12,7 +12,9 @@ func TestDFS(t *testing.T) {
 
 	g.AddVertex("alice")
 	g.AddVertex("bob")
+	g.AddVertex("joker")
 	g.AddVertex("lando")
+	g.AddVertex("han")
 
 	err := g.AddEdge("alice", "bob")
 	if err != nil {
@@ -24,9 +26,19 @@ func TestDFS(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	want := algo.Vertex("bob")
+	err = g.AddEdge("lando", "han")
+	if err != nil {
+		t.Fatal(err)
+	}
 
-	got := g.DFSrecursive("alice", "bob")
+	err = g.AddEdge("bob", "joker")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	want := algo.Vertex("han")
+
+	got := g.DFSrecursive("alice", "han")
 
 	if want != got {
 		t.Fatalf("want: %q, got: %q", want, got)

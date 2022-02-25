@@ -49,7 +49,6 @@ func (g Graph) DFSrecursive(startVertex, searchValue Vertex) Vertex {
 			if result == searchValue {
 				return result
 			}
-
 		}
 	}
 	return ""
