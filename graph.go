@@ -4,6 +4,10 @@ import (
 	"fmt"
 )
 
+const (
+	VERTEX_NOT_FOUND = Vertex("vertex not found")
+)
+
 type Vertex string
 
 type Graph struct {
@@ -51,5 +55,10 @@ func (g Graph) DFSrecursive(startVertex, searchValue Vertex) Vertex {
 			}
 		}
 	}
+	return VERTEX_NOT_FOUND
+}
+
+func (g Graph) BFS(startVertex, searchValue Vertex) Vertex {
+
 	return ""
 }
