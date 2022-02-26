@@ -60,5 +60,33 @@ func (g Graph) DFSrecursive(startVertex, searchValue Vertex) Vertex {
 
 func (g Graph) BFS(startVertex, searchValue Vertex) Vertex {
 
+	if startVertex == searchValue {
+		return startVertex
+	}
+
+	queue := NewQueue()
+
+	g.visited[startVertex] = struct{}{}
+	queue.Enqueue(string(startVertex))
+
+	for len(*queue) > 0 {
+		current_vertex, err := queue.Dequeue()
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		if Vertex(current_vertex) == searchValue {
+			return Vertex(current_vertex)
+		}
+
+		for _, adjacent := range g.adjacent[Vertex(current_vertex)] {
+			_, ok := g.visited[adjacent]
+			if !ok {
+				g.visited[adjacent] = struct{}{}
+				queue.Enqueue(string(adjacent))
+			}
+		}
+	}
+
 	return ""
 }

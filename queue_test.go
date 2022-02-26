@@ -20,7 +20,10 @@ func TestQueue(t *testing.T) {
 	result := []string{}
 
 	for len(*q) > 0 {
-		r := q.Dequeue()
+		r, err := q.Dequeue()
+		if err != nil {
+			t.Fatal(err)
+		}
 		result = append(result, r)
 
 	}
