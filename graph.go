@@ -88,5 +88,53 @@ func (g Graph) BFS(startVertex, searchValue Vertex) Vertex {
 		}
 	}
 
-	return ""
+	return VERTEX_NOT_FOUND
+}
+
+type ShortestDistanceGraph struct {
+	Verticies                 []*WeightedVertex
+	DistanceMap               map[string]int
+	PreviousWeightedVertexMap map[string]string
+	Unvisited                 []string
+	Visited                   map[string]struct{}
+}
+
+func NewShortestDistanceGraph() *ShortestDistanceGraph {
+	s := &ShortestDistanceGraph{
+		DistanceMap:               make(map[string]int),
+		PreviousWeightedVertexMap: make(map[string]string),
+		Visited:                   make(map[string]struct{}),
+	}
+
+	return s
+}
+
+func (s *ShortestDistanceGraph) AddVertex(vertex *WeightedVertex) {
+	s.Verticies = append(s.Verticies, vertex)
+}
+
+func (s ShortestDistanceGraph) GetShortestDistance(startVertex WeightedVertex, endVertex WeightedVertex) []string {
+
+	s.DistanceMap[startVertex.Value] = 0
+	current_vertex = startVertex
+
+	return []string{}
+}
+
+type WeightedVertex struct {
+	Value    string
+	Adjacent map[*WeightedVertex]int
+}
+
+func NewWeightedVertex(value string) *WeightedVertex {
+
+	w := &WeightedVertex{
+		Value:    value,
+		Adjacent: make(map[*WeightedVertex]int),
+	}
+	return w
+}
+
+func (w *WeightedVertex) AddAdjacentVertex(vertex *WeightedVertex, weight int) {
+	w.Adjacent[vertex] = weight
 }
