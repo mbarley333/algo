@@ -4,8 +4,6 @@ import (
 	"algo"
 	"fmt"
 	"testing"
-
-	"github.com/google/go-cmp/cmp"
 )
 
 func TestDFS(t *testing.T) {
@@ -36,39 +34,39 @@ func TestBFS(t *testing.T) {
 	}
 }
 
-func TestWeightedGraphTicketPrice(t *testing.T) {
-	t.Parallel()
+// func TestWeightedGraphTicketPrice(t *testing.T) {
+// 	t.Parallel()
 
-	atlanta := algo.NewWeightedVertex("Atlanta")
-	boston := algo.NewWeightedVertex("Boston")
-	chicago := algo.NewWeightedVertex("Chicago")
-	denver := algo.NewWeightedVertex("Denver")
-	el_paso := algo.NewWeightedVertex("El Paso")
+// 	atlanta := algo.NewWeightedVertex("Atlanta")
+// 	boston := algo.NewWeightedVertex("Boston")
+// 	chicago := algo.NewWeightedVertex("Chicago")
+// 	denver := algo.NewWeightedVertex("Denver")
+// 	el_paso := algo.NewWeightedVertex("El Paso")
 
-	atlanta.AddAdjacentVertex(boston, 100)
-	atlanta.AddAdjacentVertex(denver, 160)
-	boston.AddAdjacentVertex(chicago, 120)
-	boston.AddAdjacentVertex(denver, 180)
-	chicago.AddAdjacentVertex(el_paso, 80)
-	denver.AddAdjacentVertex(chicago, 40)
-	denver.AddAdjacentVertex(el_paso, 140)
+// 	atlanta.AddAdjacentVertex(boston, 100)
+// 	atlanta.AddAdjacentVertex(denver, 160)
+// 	boston.AddAdjacentVertex(chicago, 120)
+// 	boston.AddAdjacentVertex(denver, 180)
+// 	chicago.AddAdjacentVertex(el_paso, 80)
+// 	denver.AddAdjacentVertex(chicago, 40)
+// 	denver.AddAdjacentVertex(el_paso, 140)
 
-	s := algo.NewShortestDistanceGraph()
+// 	s := algo.NewShortestDistanceGraph()
 
-	s.AddVertex(atlanta)
-	s.AddVertex(boston)
-	s.AddVertex(chicago)
-	s.AddVertex(denver)
-	s.AddVertex(el_paso)
+// 	s.AddVertex(atlanta)
+// 	s.AddVertex(boston)
+// 	s.AddVertex(chicago)
+// 	s.AddVertex(denver)
+// 	s.AddVertex(el_paso)
 
-	want := []string{"Atlanta", "Denver", "Chicago", "El Paso"}
+// 	want := []string{"Atlanta", "Denver", "Chicago", "El Paso"}
 
-	got := s.GetShortestDistance(*atlanta, *el_paso)
+// 	got := s.GetShortestDistance(*atlanta, *el_paso)
 
-	if !cmp.Equal(want, got) {
-		t.Error(cmp.Diff(want, got))
-	}
-}
+// 	if !cmp.Equal(want, got) {
+// 		t.Error(cmp.Diff(want, got))
+// 	}
+// }
 
 func loadGraph() *algo.Graph {
 	g := algo.NewGraph()

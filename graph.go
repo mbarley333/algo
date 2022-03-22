@@ -116,7 +116,13 @@ func (s *ShortestDistanceGraph) AddVertex(vertex *WeightedVertex) {
 func (s ShortestDistanceGraph) GetShortestDistance(startVertex WeightedVertex, endVertex WeightedVertex) []string {
 
 	s.DistanceMap[startVertex.Value] = 0
-	current_vertex = startVertex
+	current_vertex := startVertex
+
+	for current_vertex.Value != "" {
+
+		s.Visited[current_vertex.Value] = struct{}{}
+
+	}
 
 	return []string{}
 }
